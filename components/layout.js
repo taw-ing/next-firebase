@@ -1,5 +1,4 @@
 import styles from '../styles/layout.module.scss'
-import Image from 'next/image'
 import {useEffect, useState} from 'react'
 
 const Layout = ({children}) => {
