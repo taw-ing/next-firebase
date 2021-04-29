@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css'
 import React, {useState, useEffect} from 'react'
 import firebase from '../firebase'
 import Layout from '../components/layout'
+import {Card, Row, Col} from 'react-bootstrap'
 
 export default function Home() {
 
@@ -40,15 +41,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1>Products</h1>
+      <Row>
+        <h1 p={2}>Products</h1>
+      </Row>
+      <Row>
         {products.map((product) => (
-          <div key={product.id}>
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-          </div>
+          <Col md={3} key={product.id}>
+            <Card className="mb-2">
+              <Card.Body>
+                <Card.Title>{product.name}</Card.Title>
+                <Card.Text>{product.description}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
         ))}
-      </main>
+      </Row>
     </div>
     </Layout>
   )

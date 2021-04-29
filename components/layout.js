@@ -21,10 +21,10 @@ const Layout = ({children}) => {
           alt="Talaan logo"
           width={100}
           height={100} 
-          style={{transform: `translateY(-${offsetY/3}px)`}}
+          style={{transform: `translateY(${offsetY/4}px)`}}
           />
         <h1 
-          style={{transform: `translateY(-${offsetY/3}px)`}}
+          style={{transform: `translateY(${offsetY/4}px)`}}
           className={styles.siteName}>
             talaan
         </h1>
