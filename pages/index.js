@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import React, {useState, useEffect} from 'react'
 import firebase from '../firebase'
+import Layout from '../components/layout'
 
 export default function Home() {
 
@@ -31,6 +32,7 @@ export default function Home() {
   }
 
   return (
+    <Layout>
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
@@ -48,5 +50,6 @@ export default function Home() {
         ))}
       </main>
     </div>
+    </Layout>
   )
 }

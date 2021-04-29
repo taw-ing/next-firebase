@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.container {
+  background: #efefef;
+}
+
+.header {
+  background: #ffffff;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  .logo {
+    display: inline-block;
+  }
+
+  .siteName {
+    display: inline-block;
+    font-family: Pacifico;
+  }
+}

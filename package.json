@@ -2,15 +2,22 @@
   "name": "nextfirebase",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://taw-ing.github.io/next-firebase",
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
-    "start": "next start"
+    "start": "next start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "firebase": "^8.4.2",
     "next": "10.2.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "sass": "^1.32.12"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }
