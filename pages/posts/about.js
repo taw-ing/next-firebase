@@ -1,5 +1,5 @@
 import Layout from '../../components/layout'
-import {Row, Col} from 'react-bootstrap'
+import {Row, Col} from 'react-bootstrap-v5'
 
 const About = () => (
   <Layout>
