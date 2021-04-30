@@ -10,8 +10,6 @@ const firebaseConfig = {
   appId: process.env.appId,
 };
 
-console.log(firebaseConfig)
-
 if(!firebase.apps.length)
   firebase.initializeApp(firebaseConfig)
 else

@@ -1,3 +1,4 @@
+const path = require('path')
 module.exports = {
   env: {
     apiKey: "AIzaSyCyyod4t40jKnyKj4QPG8p3w_jBjsrrrAg",
@@ -8,4 +9,7 @@ module.exports = {
     appId: "1:124233021458:web:7b6814d07dac6c214ac0cb"
   },
   distDir: 'build',
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
+  },
 }

@@ -14,23 +14,25 @@ const Layout = ({children}) => {
   },[])
 
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <img src="/ledger.svg" 
-          className={styles.logo}
-          alt="Talaan logo"
-          width={100}
-          height={100} 
-          style={{transform: `translateY(${offsetY/4}px)`}}
-          />
-        <h1 
-          style={{transform: `translateY(${offsetY/4}px)`}}
-          className={styles.siteName}>
-            talaan
-        </h1>
-      </header>
+    <>
+    <header className={styles.header}>
+      <img src="/ledger.svg" 
+        className={styles.logo}
+        alt="Talaan logo"
+        width={100}
+        height={100} 
+        style={{transform: `translateY(${offsetY/4}px)`}}
+        />
+      <h1 
+        style={{transform: `translateY(${offsetY/4}px)`}}
+        className={styles.siteName}>
+          batayan<span className={styles.tld}>.xyz</span>
+      </h1>
+    </header>
+    <div className="container">
       {children}
     </div>
+    </>
   )
 }
 export default Layout
