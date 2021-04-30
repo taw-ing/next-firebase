@@ -9,12 +9,17 @@ export default function Home() {
 
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
+  const [topic, setTopic] = useState('south-china-sea')
 
   const ref = firebase.firestore().collection('products')
 
+  const filterByTopic = (topic) => {
+    setTopic(topic)
+  }
+
   function getProducts() {
     setLoading(true)
-    ref.onSnapshot((querySnapshot) => {
+    ref.where('topic','==',topic).onSnapshot((querySnapshot) => {
       const items = []
       querySnapshot.forEach((doc) => {
         items.push(doc.data())
@@ -26,11 +31,11 @@ export default function Home() {
 
   useEffect(()=>{
     getProducts()
-  }, [])
+  }, [topic])
 
-  if(loading) {
-    return <h1>Loading...</h1>
-  }
+//  if(loading) {
+//    return <h1>Loading...</h1>
+//  }
 
   return (
     <Layout>
@@ -42,6 +47,13 @@ export default function Home() {
 
       <Row>
         <p className="mb-2">Ano ang batayan mo sa iyong argumento? (<i>Char</i>) Ang site na ito ay ginawa "for the good of the society" kunuhay. Bitaw, wala na talaga akong maisip na website kung san pwede akong magkapera. Kaya <a href="/">Buy me a coffee</a> na. </p>
+      </Row>
+      <Row className="mb-2">
+        <div className="btn-group col-md-6" role="group" arial-label="Filter by">
+          <button type="button" className="btn btn-light btn-sm" href="#" onClick={()=> filterByTopic('south-china-sea')}>South China Sea</button>
+          <button type="button" className="btn btn-light btn-sm" href="#" onClick={()=> filterByTopic('coa')}>COA Audit</button>
+          <button type="button" className="btn btn-light btn-sm" href="#" onClick={()=> filterByTopic('history')}>History</button>
+        </div>
       </Row>
       <Row>
         {products.map((product) => (

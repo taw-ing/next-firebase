@@ -15,12 +15,12 @@ const Layout = ({children}) => {
 
   return (
     <>
-    <ul class="nav justify-content-center">
-      <li class="nav-item">
-        <a class="nav-link active" href="/">Home</a>
+    <ul className="nav justify-content-center">
+      <li className="nav-item">
+        <a className="nav-link active" href="/">Home</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/posts/about">About</a>
+      <li className="nav-item">
+        <a className="nav-link" href="/posts/about">About</a>
       </li>
     </ul>
     <header className={styles.header}>
