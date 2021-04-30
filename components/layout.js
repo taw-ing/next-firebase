@@ -15,6 +15,14 @@ const Layout = ({children}) => {
 
   return (
     <>
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/about">About</a>
+      </li>
+    </ul>
     <header className={styles.header}>
       <img src="/ledger.svg" 
         className={styles.logo}
@@ -26,7 +34,7 @@ const Layout = ({children}) => {
       <h1 
         style={{transform: `translateY(${offsetY/4}px)`}}
         className={styles.siteName}>
-          batayan<span className={styles.tld}>.xyz</span>
+          _batayan<span className={styles.tld}>.xyz</span>
       </h1>
     </header>
     <div className="container">

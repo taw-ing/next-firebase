@@ -53,7 +53,7 @@ export default function Home() {
               </Card.Body>
               {(product.topic)?
               <Card.Footer>
-                topic <span className="badge bg-warning">{product?.topic}</span>
+                <span className="badge bg-dark">{product?.topic}</span>
               </Card.Footer>
               : ' '}
             </Card>
