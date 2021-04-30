@@ -10,17 +10,32 @@ export default function Home() {
 
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
-  const [topic, setTopic] = useState('south-china-sea')
+  const [topics, setTopics] = useState([])
 
   const ref = firebase.firestore().collection('products')
 
   const filterByTopic = (topic) => {
-    setTopic(topic)
+    if(topic==='all'){
+      setTopics([])
+      return;
+    }
+
+    if(topics.includes(topic)){
+      debugger
+      const temp = [...topics]
+      temp.splice(topics.indexOf(topic),1);
+      setTopics(temp);
+    } else {
+      setTopics([...topics, topic])
+    }
+    
   }
 
   function getProducts() {
     setLoading(true)
-    ref.where('topic','==',topic).onSnapshot((querySnapshot) => {
+    debugger
+    const ref2 = topics.length > 0 ? ref.where('topic','in',topics): ref;
+    ref2.onSnapshot((querySnapshot) => {
       const items = []
       querySnapshot.forEach((doc) => {
         items.push(doc.data())
@@ -32,7 +47,7 @@ export default function Home() {
 
   useEffect(()=>{
     getProducts()
-  }, [topic])
+  }, [topics])
 
 //  if(loading) {
 //    return <h1>Loading...</h1>
@@ -46,15 +61,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Row>
-        <p className="mb-2">Ano ang batayan mo sa iyong argumento? (<i>Char</i>) Ang site na ito ay ginawa "for the good of the society" kunuhay. Bitaw, wala na talaga akong maisip na website kung san pwede akong magkapera. Kaya <a href="/">Buy me a coffee</a> na. </p>
-      </Row>
       <Row className="mb-2">
         <div arial-label="Filter by">
           <span>Filter: </span>
-          <FilterBtn filterFunction={filterByTopic} topic='south-china-sea' active={topic=='south-china-sea'}>South China Sea</FilterBtn>
-          <FilterBtn filterFunction={filterByTopic} topic='coa' active={topic=='coa'}>COA Audit</FilterBtn>
-          <FilterBtn filterFunction={filterByTopic} topic='history' active={topic=='history'}>History</FilterBtn>
+          <FilterBtn filterFunction={filterByTopic} topic='all' active={topics.length===0}>Show all</FilterBtn>
+          <FilterBtn filterFunction={filterByTopic} topic='south-china-sea' active={topics.includes('south-china-sea')}>South China Sea</FilterBtn>
+          <FilterBtn filterFunction={filterByTopic} topic='coa' active={topics.includes('coa')}>COA Audit</FilterBtn>
+          <FilterBtn filterFunction={filterByTopic} topic='history' active={topics.includes('history')}>History</FilterBtn>
         </div>
       </Row>
       <Row>

@@ -5,7 +5,9 @@ const FilterButton = ({children, active, topic, filterFunction}) => {
      <button type="button" 
           className={classnames('btn','btn-sm', 'm-1',{'btn-dark':active,'btn-light':!active})}
           onClick={()=>filterFunction(topic)}
-          href="#">
+          href="#"
+          disabled={topic==='all' && active}
+          >
           {children}
     </button>
 
