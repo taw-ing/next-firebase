@@ -4,6 +4,7 @@ import React, {useState, useEffect} from 'react'
 import firebase from '../firebase'
 import Layout from '../components/layout'
 import {Badge, Card, Row, Col} from 'react-bootstrap-v5'
+import FilterBtn from '../components/filterbtn'
 
 export default function Home() {
 
@@ -49,10 +50,11 @@ export default function Home() {
         <p className="mb-2">Ano ang batayan mo sa iyong argumento? (<i>Char</i>) Ang site na ito ay ginawa "for the good of the society" kunuhay. Bitaw, wala na talaga akong maisip na website kung san pwede akong magkapera. Kaya <a href="/">Buy me a coffee</a> na. </p>
       </Row>
       <Row className="mb-2">
-        <div className="btn-group col-md-6" role="group" arial-label="Filter by">
-          <button type="button" className="btn btn-light btn-sm" href="#" onClick={()=> filterByTopic('south-china-sea')}>South China Sea</button>
-          <button type="button" className="btn btn-light btn-sm" href="#" onClick={()=> filterByTopic('coa')}>COA Audit</button>
-          <button type="button" className="btn btn-light btn-sm" href="#" onClick={()=> filterByTopic('history')}>History</button>
+        <div arial-label="Filter by">
+          <span>Filter: </span>
+          <FilterBtn filterFunction={filterByTopic} topic='south-china-sea' active={topic=='south-china-sea'}>South China Sea</FilterBtn>
+          <FilterBtn filterFunction={filterByTopic} topic='coa' active={topic=='coa'}>COA Audit</FilterBtn>
+          <FilterBtn filterFunction={filterByTopic} topic='history' active={topic=='history'}>History</FilterBtn>
         </div>
       </Row>
       <Row>
@@ -71,6 +73,9 @@ export default function Home() {
             </Card>
           </Col>
         ))}
+      </Row>
+      <Row>
+        {loading?<p>Loading...</p>:<></>}
       </Row>
     </Layout>
   )
